@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+body {
+    background-color: #f4f6f8;
+    padding: 30px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    text-align: left;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+label {
+    font-weight: 600;
+}
+
+textarea, input[type="date"], input[type="text"], input[type="submit"] {
+    font-family: inherit;
+    font-size: 15px;
+}
+
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+input[type="submit"] {
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: none;
+    background: #1976d2;
+    color: white;
+    cursor: pointer;
+}
+
+.errors {
+    background: #fff2f0;
+    border: 1px solid #ffcccc;
+    padding: 10px;
+    margin-bottom: 12px;
+    color: #990000;
+}
+
+/* Field-level error highlighting */
+.field-error {
+    border-color: #e53935 !important;
+    background-color: #fff6f6;
+    box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.06);
+}
+
+/* small helper for error notes */
+.error-note {
+    color: #e53935;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+#report {
+    white-space: pre-wrap;
+    background: #fafafa;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #eee;
+}
+
+button, a {
+    margin-right: 10px;
+}
+
+.field-controls {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.small-btn {
+    background: #eee;
+    border: 1px solid #ddd;
+    padding: 6px 8px;
+    margin-right: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.small-btn:hover {
+    background: #f0f0f0;
+}
+
+.te-group {
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.te-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.te-id, .te-summary {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.remove-te {
+    background: #ffebee;
+    border: 1px solid #ffcccc;
+    color: #c62828;
+}

@@ -1,0 +1,304 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h1>Generate Daily Report</h1>
+    {% if errors %}
+        <div class="errors">
+            <h3>Errors:</h3>
+            <ul>
+                {% for e in errors %}
+                    <li>{{ e }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <div id="clientErrors" style="color: red; display: none;"></div>
+
+    <form id="reportForm" action="/generate_report" method="post">
+        <label for="date">Select Date:</label>
+        <input type="date" id="date" name="date" value="{{ date }}" required>
+        <br><br>
+
+        <label>Bench Bookings</label>
+        <div class="field-controls">
+            <button type="button" class="small-btn" id="add-booking-btn">+ Add Booking</button>
+            <button type="button" class="small-btn" onclick="insertSample('bookings_group','bookings')">Insert Sample Booking</button>
+            <button type="button" class="small-btn" onclick="copyBookings()">Copy Bookings JSON</button>
+            <button type="button" class="small-btn" id="toggleAdvancedBtn">Toggle Advanced JSON Editor</button>
+        </div>
+
+        <div id="bookings_group" class="bookings-inline">
+            <!-- booking rows go here -->
+        </div>
+        <!-- hidden bookings payload filled by JS before submit -->
+        <textarea id="bookings_json" name="bookings_json" style="display:none">{{ bookings_json or '' }}</textarea>
+        <div id="bookings_error" class="error-note" style="display:none">Invalid Bookings</div>
+        <br>
+
+        <!-- Advanced JSON editor area (hidden by default) -->
+        <div id="advancedEditor" style="display:none;margin-bottom:12px;">
+            <h4>Advanced Bookings JSON Editor</h4>
+            <textarea id="advanced_bookings_editor" style="width:100%;height:160px;"></textarea>
+            <div style="margin-top:6px;">
+                <button type="button" class="small-btn" onclick="applyAdvancedBookings()">Apply JSON to Bookings</button>
+                <button type="button" class="small-btn" onclick="closeAdvanced()">Close Editor</button>
+            </div>
+        </div>
+
+        <label>Planned Executions</label>
+        <div class="field-controls">
+            <button type="button" class="small-btn" id="add-te-btn">+ Add Test Execution</button>
+            <button type="button" class="small-btn" onclick="insertSample('executions_group','executions')">Insert Sample TE</button>
+        </div>
+        <div id="executions_group">
+            <!-- dynamic TE groups will be inserted here -->
+        </div>
+        <!-- hidden executions payload filled by JS before submit -->
+        <textarea id="executions_json" name="executions_json" style="display:none">{{ executions_json or '' }}</textarea>
+        <div id="executions_error" class="error-note" style="display:none">Invalid Executions</div>
+        <br>
+
+        <label for="blockers_text">Blockers / Issues (one per line)</label>
+        <div class="field-controls">
+            <button type="button" class="small-btn" onclick="insertSample('blockers_text','blockers')">Insert Sample</button>
+            <button type="button" class="small-btn" onclick="copyField('blockers_text')">Copy</button>
+        </div>
+        <br>
+        <textarea id="blockers_text" name="blockers_text" rows="3">{{ blockers_text or 'Network outage on bench 2\nJira access issue' }}</textarea>
+        <div id="blockers_error" class="error-note" style="display:none"></div>
+        <br>
+
+        <div>
+            <h3>Preview</h3>
+            <pre id="livePreview" style="background:#f9f9f9;padding:10px;border-radius:6px;border:1px solid #eee;white-space:pre-wrap;max-height:250px;overflow:auto"></pre>
+        </div>
+        <br>
+
+        <input type="submit" value="Generate Report">
+    </form>
+</div>
+
+    <!-- Load helper JS -->
+    <script src="{{ url_for('static', filename='js/form_helpers.js') }}"></script>
+
+    <!-- CodeMirror 5 from CDN for the advanced JSON editor -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+
+    <script>
+    // expose server-side errors into JS for mapping to fields
+    const SERVER_ERRORS = {{ (errors|default([]))|tojson }};
+    (function(){
+        const FH = window.FormHelpers;
+        const form = document.getElementById('reportForm');
+        const clientErrors = document.getElementById('clientErrors');
+        const bookingsHidden = document.getElementById('bookings_json');
+        const bookingsGroup = document.getElementById('bookings_group');
+        const addBookingBtn = document.getElementById('add-booking-btn');
+        const executionsHidden = document.getElementById('executions_json');
+        const executionsGroup = document.getElementById('executions_group');
+        const addTeBtn = document.getElementById('add-te-btn');
+        const blockersField = document.getElementById('blockers_text');
+        const bookingsErrDiv = document.getElementById('bookings_error');
+        const executionsErrDiv = document.getElementById('executions_error');
+        const blockersErrDiv = document.getElementById('blockers_error');
+        const livePreview = document.getElementById('livePreview');
+        const advancedEditor = document.getElementById('advancedEditor');
+        const advancedTextArea = document.getElementById('advanced_bookings_editor');
+        const toggleAdvancedBtn = document.getElementById('toggleAdvancedBtn');
+
+        function showError(msg){ clientErrors.style.display = 'block'; clientErrors.innerText = msg; }
+        function clearError(){ clientErrors.style.display = 'none'; clientErrors.innerText = ''; }
+
+        // compact booking row builder (inline inputs)
+        let bookingCount = 0;
+        function createBookingRow(data){
+            const idx = bookingCount++;
+            const row = document.createElement('div');
+            row.className = 'booking-row';
+            row.dataset.index = idx;
+            row.innerHTML = `
+                <input class="bk-remote" placeholder="remote" value="${data && data.remote ? data.remote : ''}" />
+                <input class="bk-location" placeholder="location" value="${data && data.location ? data.location : ''}" />
+                <input type="time" class="bk-start" value="${data && data.start ? data.start : ''}" />
+                <input type="time" class="bk-end" value="${data && data.end ? data.end : ''}" />
+                <button type="button" class="small-btn remove-booking">Remove</button>
+            `;
+            row.querySelector('.remove-booking').addEventListener('click', function(){ row.remove(); updatePreview(); });
+            ['bk-remote','bk-location','bk-start','bk-end'].forEach(cls=>{ const el=row.querySelector('.'+cls); if(el) el.addEventListener('input', updatePreview); });
+            bookingsGroup.appendChild(row);
+            return row;
+        }
+
+        function initBookings(){
+            let existing = null;
+            try{ existing = bookingsHidden.value ? JSON.parse(bookingsHidden.value) : null; }catch(e){ existing = null; }
+            if(existing && Array.isArray(existing) && existing.length>0){ existing.forEach(function(b){ createBookingRow(b); }); }
+            else { createBookingRow(); }
+            updatePreview();
+        }
+        initBookings();
+        addBookingBtn.addEventListener('click', function(){ createBookingRow(); updatePreview(); });
+
+        // TE UI
+        let teCount = 0;
+        function createTeGroup(data){
+            const idx = teCount++;
+            const container = document.createElement('div');
+            container.className = 'te-group';
+            container.dataset.index = idx;
+            container.innerHTML = `
+                <div class="te-header">
+                    <strong>Test Execution</strong>
+                    <button type="button" class="small-btn remove-te">Remove</button>
+                </div>
+                <input type="text" class="te-id" placeholder="SECONPRO-30511" value="${data && data.id ? data.id : ''}">
+                <input type="text" class="te-summary" placeholder="Summary" value="${data && data.summary ? data.summary : ''}">
+                <textarea class="te-tests" rows="3" placeholder="one test id per line">${data && data.tests ? (Array.isArray(data.tests) ? data.tests.map(t=> typeof t === 'string' ? t : (t.id || '')).join('\n') : '') : ''}</textarea>
+            `;
+            container.querySelector('.remove-te').addEventListener('click', function(){ container.remove(); updatePreview(); });
+            ['te-id','te-summary','te-tests'].forEach(cls=>{ const el=container.querySelector('.'+cls); if(el) el.addEventListener('input', updatePreview); });
+            executionsGroup.appendChild(container);
+            return container;
+        }
+
+        function initTEs(){
+            let existing = null;
+            try{ existing = executionsHidden.value ? JSON.parse(executionsHidden.value) : null; }catch(e){ existing = null; }
+            if(existing && Array.isArray(existing) && existing.length>0){ existing.forEach(function(ex){ createTeGroup(ex); }); }
+            else { createTeGroup(); }
+            updatePreview();
+        }
+        initTEs();
+        addTeBtn.addEventListener('click', function(){ createTeGroup(); updatePreview(); });
+
+        window.copyBookings = function(){ const arr = FH.collectBookingGroups(); navigator.clipboard.writeText(JSON.stringify(arr,null,2)); showError('Bookings JSON copied'); setTimeout(clearError,1200); }
+
+        window.insertSample = function(fieldId, type){
+            if(fieldId === 'executions_group'){ createTeGroup({id: 'SECONPRO-30511', summary: 'Example', tests: ['SECONPRO-3930','SECONPRO-3954']}); return; }
+            if(fieldId === 'bookings_group'){ createBookingRow({remote:'remote 1', start:'08:30', end:'12:30'}); return; }
+            const el = document.getElementById(fieldId);
+            if(type === 'bookings'){ el.value = JSON.stringify(SAMPLE_DATA.bookings, null, 2); }
+            else if(type === 'executions'){ el.value = JSON.stringify(SAMPLE_DATA.executions, null, 2); }
+            else if(type === 'blockers'){ el.value = SAMPLE_DATA.blockers; }
+            el.classList.remove('field-error'); updatePreview();
+        }
+
+        // Preview update
+        function updatePreview(){
+            const bookings = FH.collectBookingGroups();
+            const execs = FH.collectTeGroups();
+            livePreview.innerText = FH.generatePreviewText(bookings, execs);
+        }
+
+        // Advanced JSON editor (CodeMirror)
+        let cmEditor = null;
+        toggleAdvancedBtn.addEventListener('click', function(){
+            if(advancedEditor.style.display === 'none'){
+                advancedEditor.style.display = 'block';
+                advancedTextArea.value = bookingsHidden.value || JSON.stringify(FH.collectBookingGroups(), null, 2);
+                if(!cmEditor){ cmEditor = CodeMirror.fromTextArea(advancedTextArea, {lineNumbers:true, mode:'application/json'}); }
+                else { cmEditor.refresh(); }
+            } else {
+                advancedEditor.style.display = 'none';
+            }
+        });
+        window.applyAdvancedBookings = function(){
+            try{
+                const txt = cmEditor ? cmEditor.getValue() : advancedTextArea.value;
+                const parsed = JSON.parse(txt);
+                // clear existing rows
+                document.querySelectorAll('.booking-row').forEach(el=>el.remove());
+                parsed.forEach(b=>createBookingRow(b));
+                updatePreview();
+                advancedEditor.style.display = 'none';
+            }catch(e){ showError('Invalid JSON in advanced editor: ' + e.message); }
+        }
+        window.closeAdvanced = function(){ advancedEditor.style.display='none'; }
+
+        // before submit: serialize booking and TE groups into hidden fields
+        form.addEventListener('submit', function(e){
+            clearError();
+            let ok = true;
+
+            // collect bookings
+            const bookingRows = Array.from(document.querySelectorAll('.booking-row'));
+            const bookingsArr = [];
+            bookingRows.forEach(function(r){
+                const remote = r.querySelector('.bk-remote').value.trim();
+                const location = r.querySelector('.bk-location').value.trim();
+                const start = r.querySelector('.bk-start').value.trim();
+                const end = r.querySelector('.bk-end').value.trim();
+                if(!remote && !location){ ok = false; r.querySelector('.bk-remote').classList.add('field-error'); r.querySelector('.bk-location').classList.add('field-error'); showError('Each booking must have either a Remote or Location.'); }
+                if(start && !FH.validateTimeFormat(start)){ ok=false; r.querySelector('.bk-start').classList.add('field-error'); showError('Start time must be HH:MM'); }
+                if(end && !FH.validateTimeFormat(end)){ ok=false; r.querySelector('.bk-end').classList.add('field-error'); showError('End time must be HH:MM'); }
+                bookingsArr.push({remote: remote || '', location: location || '', start: start || '', end: end || ''});
+            });
+
+            // collect TE groups
+            const groups = Array.from(document.querySelectorAll('.te-group'));
+            const execs = [];
+            groups.forEach(function(g){
+                const id = g.querySelector('.te-id').value.trim();
+                const summary = g.querySelector('.te-summary').value.trim();
+                const testsText = g.querySelector('.te-tests').value.trim();
+                const tests = testsText ? testsText.split(/\r?\n/).map(s=>s.trim()).filter(Boolean) : [];
+                if(!id){ ok = false; g.querySelector('.te-id').classList.add('field-error'); showError('Each Test Execution must have an ID.'); }
+                execs.push({id:id, summary:summary, tests:tests});
+            });
+
+            if(!ok){ e.preventDefault(); return false; }
+
+            bookingsHidden.value = JSON.stringify(bookingsArr);
+            executionsHidden.value = JSON.stringify(execs);
+        });
+
+        // When server returns validation errors, map them to fields for inline highlighting
+        function mapServerErrors(){
+            if(!Array.isArray(SERVER_ERRORS) || SERVER_ERRORS.length===0) return;
+            SERVER_ERRORS.forEach(function(err){
+                // Examples: "Bookings[0]: message", "Executions[1].tests[0]: message"
+                const bMatch = err.match(/^Bookings\[(\d+)\]:?\s*(.*)/);
+                if(bMatch){
+                    const idx = parseInt(bMatch[1],10);
+                    const msg = bMatch[2] || 'Booking error';
+                    const rows = Array.from(document.querySelectorAll('.booking-row'));
+                    const row = rows[idx];
+                    if(row){
+                        ['bk-remote','bk-location','bk-start','bk-end'].forEach(cls=>{ const el=row.querySelector('.'+cls); if(el) el.classList.add('field-error'); });
+                        let note = row.querySelector('.inline-error'); if(!note){ note = document.createElement('div'); note.className='error-note inline-error'; row.appendChild(note); }
+                        note.innerText = msg;
+                    }
+                    return;
+                }
+                const eMatch = err.match(/^Executions\[(\d+)\]\.?([\w\.]*)?:?\s*(.*)/);
+                if(eMatch){
+                    const idx = parseInt(eMatch[1],10);
+                    const rest = eMatch[2] || '';
+                    const msg = eMatch[3] || 'Execution error';
+                    const groups = Array.from(document.querySelectorAll('.te-group'));
+                    const g = groups[idx];
+                    if(g){
+                        if(rest.startsWith('tests')){
+                            // highlight tests textarea
+                            const t = g.querySelector('.te-tests'); if(t) t.classList.add('field-error');
+                        } else {
+                            const idf = g.querySelector('.te-id'); if(idf) idf.classList.add('field-error');
+                        }
+                        let note = g.querySelector('.inline-error'); if(!note){ note = document.createElement('div'); note.className='error-note inline-error'; g.appendChild(note); }
+                        note.innerText = msg;
+                    }
+                    return;
+                }
+            });
+        }
+
+        // initialize mapping after a short delay (ensure dynamic rows have been created)
+        setTimeout(mapServerErrors, 200);
+
+    })();
+    </script>
+{% endblock %}
+

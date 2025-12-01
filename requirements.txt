@@ -1,0 +1,13 @@
+Flask~=3.1.2
+
+# Optional validation backends. Install only if you want to enable them:
+# pip install pydantic
+pydantic~=2.12.5
+# pip install jsonschema
+jsonschema~=4.25.1
+
+# Optional dev/test dependencies
+# To run Playwright UI tests: install playwright and pytest-playwright
+# pip install playwright pytest-playwright
+playwright
+pytest-playwright

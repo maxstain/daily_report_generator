@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Daily Report for {{ date or 'Today' }}</h1>
+    <div id="report">{{ report | safe }}</div>
+    <br>
+    <button id="downloadBtn">Download as .txt</button>
+    <button id="emailPlainBtn">Email (plain)</button>
+    <button id="emailHtmlBtn">Email (HTML)</button>
+    <button id="copyEmailHtmlBtn">Copy Email HTML</button>
+    <a href="/">Back</a>
+
+    <script>
+    function getRawText(){
+        let html = document.getElementById('report').innerHTML;
+        let text = html.replace(/<br\s*\/?>/gi, "\n");
+        text = text.replace(/<[^>]+>/g, "");
+        return text;
+    }
+    function getEmailHtml(){
+        const title = document.querySelector('h1').innerText;
+        const reportHtml = document.getElementById('report').innerHTML;
+        return `<!doctype html><html><head><meta charset="utf-8"><title>${title}</title></head><body><h1>${title}</h1><div>${reportHtml}</div></body></html>`;
+    }
+
+    document.getElementById('downloadBtn').addEventListener('click', function(){
+        const text = getRawText();
+        const blob = new Blob([text], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href = url; a.download = 'daily_report.txt'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('emailPlainBtn').addEventListener('click', function(){
+        const subject = encodeURIComponent(document.querySelector('h1').innerText);
+        const body = encodeURIComponent(getRawText());
+        // use mailto with subject and body (note length limitations)
+        window.location.href = `mailto:?subject=${subject}&body=${body}`;
+    });
+
+    document.getElementById('emailHtmlBtn').addEventListener('click', function(){
+        // trigger download of an HTML file that can be attached to emails
+        const html = getEmailHtml();
+        const blob = new Blob([html], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href = url; a.download = 'daily_report.html'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('copyEmailHtmlBtn').addEventListener('click', function(){
+        const html = getEmailHtml();
+        navigator.clipboard.writeText(html).then(function(){
+            alert('Email HTML copied to clipboard');
+        }, function(){
+            alert('Copy failed');
+        });
+    });
+    </script>
+{% endblock %}
