@@ -45,8 +45,8 @@ def _format_bookings(bookings: List[Dict[str, Any]]) -> str:
 
 
 def _format_planned_executions(executions: List[Dict[str, Any]]) -> str:
-    """Format planned executions into numbered list lines.
-
+    """
+    Format planned executions into numbered list lines.
     Expected execution item: {"id": "SECONPRO-30511", "summary": "..."}
     """
     if not executions:
