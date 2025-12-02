@@ -25,7 +25,7 @@ Best Regards.
 
 
 def _format_bookings(bookings: List[Dict[str, Any]]) -> str:
-    """Format bench booking list into the template block.
+    """Format the bench booking list into the template block.
 
     Expected bookings item: {"remote": "remote 1", "start": "08:30", "end": "12:30"}
     """
