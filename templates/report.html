@@ -32,8 +32,10 @@
     document.getElementById('emailPlainBtn').addEventListener('click', function(){
         const subject = encodeURIComponent(document.querySelector('h1').innerText);
         const body = encodeURIComponent(getRawText());
-        // use mailto with subject and body (note length limitations)
-        window.location.href = `mailto:?subject=${subject}&body=${body}`;
+        // use mailto with fixed recipients and CC, plus subject and body (note length limitations)
+        const to = 'extern.eya.rzeigui@seat.es,eya.a.rzeigui@capgemini.com';
+        const cc = encodeURIComponent('fadwa.belghith@capgemini.com; wael.hadded@capgemini.com');
+        window.location.href = `mailto:${to}?cc=${cc}&subject=${subject}&body=${body}`;
     });
 
     document.getElementById('emailHtmlBtn').addEventListener('click', function(){

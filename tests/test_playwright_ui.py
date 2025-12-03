@@ -10,7 +10,6 @@ async def test_dynamic_ui_and_preview(page):
     await page.click('#add-booking-btn')
     # fill the first booking row inputs
     rem = await page.query_selector_all('.bk-remote')
-    loc = await page.query_selector_all('.bk-location')
     start = await page.query_selector_all('.bk-start')
     end = await page.query_selector_all('.bk-end')
     await rem[0].fill('remote A')

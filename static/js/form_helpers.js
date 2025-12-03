@@ -3,14 +3,13 @@
     const TIME_RE = /^\d{2}:\d{2}$/;
 
     function collectBookingGroups(){
-        const groups = Array.from(document.querySelectorAll('.booking-group'));
+        const groups = Array.from(document.querySelectorAll('.booking-row'));
         const arr = [];
         groups.forEach(function(g){
             const remote = (g.querySelector('.bk-remote') && g.querySelector('.bk-remote').value.trim()) || '';
-            const location = (g.querySelector('.bk-location') && g.querySelector('.bk-location').value.trim()) || '';
             const start = (g.querySelector('.bk-start') && g.querySelector('.bk-start').value.trim()) || '';
             const end = (g.querySelector('.bk-end') && g.querySelector('.bk-end').value.trim()) || '';
-            arr.push({remote, location, start, end});
+            arr.push({remote, start, end});
         });
         return arr;
     }
@@ -39,8 +38,8 @@
         out += 'Bookings:\n';
         if(!bookings || bookings.length===0) out += '  (none)\n';
         else bookings.forEach(function(b,i){
-            const loc = b.location || b.remote || '';
-            out += `  ${i+1}. ${loc} (${b.start || '--'} - ${b.end || '--'})\n`;
+            const rem = b.remote || '';
+            out += `  ${i+1}. ${rem} (${b.start || '--'} - ${b.end || '--'})\n`;
         });
         out += '\nExecutions:\n';
         if(!executions || executions.length===0) out += '  (none)\n';

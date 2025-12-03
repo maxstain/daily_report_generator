@@ -4,7 +4,7 @@ from Functions import validation
 def test_validate_bookings_happy():
     raw = [
         {"remote": "remote 1", "start": "08:30", "end": "12:30"},
-        {"location": "office", "start": "13:00", "end": "17:00"},
+        {"remote": "remote 2", "start": "13:00", "end": "17:00"},
     ]
     valid, errors = validation.validate_bookings(raw)
     assert errors == []

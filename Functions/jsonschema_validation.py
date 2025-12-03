@@ -5,10 +5,10 @@ BOOKING_SCHEMA = {
     "type": "object",
     "properties": {
         "remote": {"type": "string"},
-        "location": {"type": "string"},
         "start": {"type": "string", "pattern": "^\\d{2}:\\d{2}$"},
         "end": {"type": "string", "pattern": "^\\d{2}:\\d{2}$"},
     },
+    "required": ["remote"],
     "additionalProperties": True
 }
 
@@ -52,8 +52,9 @@ def validate_bookings(raw: Any) -> Tuple[List[dict], List[str]]:
         if err:
             errors.append(f'Bookings[{i}]: {err}')
             continue
-        if not item.get('remote') and not item.get('location'):
-            errors.append(f'Bookings[{i}]: either "remote" or "location" must be provided')
+        # Ensure remote is provided by schema required, but add a friendly message if missing
+        if not item.get('remote'):
+            errors.append(f'Bookings[{i}]: "remote" is required')
             continue
         valid.append(item)
     return valid, errors

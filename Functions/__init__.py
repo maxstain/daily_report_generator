@@ -34,7 +34,7 @@ def _format_bookings(bookings: List[Dict[str, Any]]) -> str:
 
     lines = []
     for b in bookings:
-        remote = b.get("remote") or b.get("location") or "Remote"
+        remote = b.get("remote") or "Remote"
         start = b.get("start", "")
         end = b.get("end", "")
         lines.append(f"    - {remote}:")
@@ -132,7 +132,7 @@ def generate_report(bookings: List[Dict[str, Any]], executions: List[Dict[str, A
     """Generate the daily report string based on provided data.
 
     Inputs:
-    - bookings: list of dicts with keys: remote/location, start, end
+    - bookings: list of dicts with keys: remote, start, end
     - executions: list of dicts. Each dict may include id, summary, tests (list)
     - blockers: list of strings
     - date: optional date (str in ISO format or datetime.date). If omitted, uses today's date.

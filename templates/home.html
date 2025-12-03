@@ -121,13 +121,12 @@
             row.dataset.index = idx;
             row.innerHTML = `
                 <input class="bk-remote" placeholder="remote" value="${data && data.remote ? data.remote : ''}" />
-                <input class="bk-location" placeholder="location" value="${data && data.location ? data.location : ''}" />
                 <input type="time" class="bk-start" value="${data && data.start ? data.start : ''}" />
                 <input type="time" class="bk-end" value="${data && data.end ? data.end : ''}" />
                 <button type="button" class="small-btn remove-booking">Remove</button>
             `;
             row.querySelector('.remove-booking').addEventListener('click', function(){ row.remove(); updatePreview(); });
-            ['bk-remote','bk-location','bk-start','bk-end'].forEach(cls=>{ const el=row.querySelector('.'+cls); if(el) el.addEventListener('input', updatePreview); });
+            ['bk-remote','bk-start','bk-end'].forEach(cls=>{ const el=row.querySelector('.'+cls); if(el) el.addEventListener('input', updatePreview); });
             bookingsGroup.appendChild(row);
             return row;
         }
@@ -228,13 +227,12 @@
             const bookingsArr = [];
             bookingRows.forEach(function(r){
                 const remote = r.querySelector('.bk-remote').value.trim();
-                const location = r.querySelector('.bk-location').value.trim();
                 const start = r.querySelector('.bk-start').value.trim();
                 const end = r.querySelector('.bk-end').value.trim();
-                if(!remote && !location){ ok = false; r.querySelector('.bk-remote').classList.add('field-error'); r.querySelector('.bk-location').classList.add('field-error'); showError('Each booking must have either a Remote or Location.'); }
+                if(!remote){ ok = false; r.querySelector('.bk-remote').classList.add('field-error'); showError('Each booking must have a Remote.'); }
                 if(start && !FH.validateTimeFormat(start)){ ok=false; r.querySelector('.bk-start').classList.add('field-error'); showError('Start time must be HH:MM'); }
                 if(end && !FH.validateTimeFormat(end)){ ok=false; r.querySelector('.bk-end').classList.add('field-error'); showError('End time must be HH:MM'); }
-                bookingsArr.push({remote: remote || '', location: location || '', start: start || '', end: end || ''});
+                bookingsArr.push({remote: remote || '', start: start || '', end: end || ''});
             });
 
             // collect TE groups
@@ -267,7 +265,7 @@
                     const rows = Array.from(document.querySelectorAll('.booking-row'));
                     const row = rows[idx];
                     if(row){
-                        ['bk-remote','bk-location','bk-start','bk-end'].forEach(cls=>{ const el=row.querySelector('.'+cls); if(el) el.classList.add('field-error'); });
+                        ['bk-remote','bk-start','bk-end'].forEach(cls=>{ const el=row.querySelector('.'+cls); if(el) el.classList.add('field-error'); });
                         let note = row.querySelector('.inline-error'); if(!note){ note = document.createElement('div'); note.className='error-note inline-error'; row.appendChild(note); }
                         note.innerText = msg;
                     }

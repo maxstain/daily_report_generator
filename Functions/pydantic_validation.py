@@ -11,7 +11,6 @@ TIME_RE = re.compile(r"^\d{2}:\d{2}$")
 
 class BookingModel(BaseModel):
     remote: Optional[str] = None
-    location: Optional[str] = None
     start: Optional[str] = None
     end: Optional[str] = None
 
@@ -24,9 +23,9 @@ class BookingModel(BaseModel):
         return v
 
     @model_validator(mode='after')
-    def check_remote_or_location(self):
-        if not self.remote and not self.location:
-            raise ValueError('either "remote" or "location" must be provided')
+    def check_remote_required(self):
+        if not self.remote:
+            raise ValueError('"remote" is required')
         return self
 
 

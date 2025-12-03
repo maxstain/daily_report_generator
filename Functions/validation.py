@@ -17,7 +17,7 @@ def _error_str(e: Exception) -> str:
 
 def validate_bookings(raw: Any) -> Tuple[List[dict], List[str]]:
     """Validate bookings JSON (expected list of objects).
-    Each booking must be a dict with either 'remote' or 'location' (string).
+    Each booking must be a dict with 'remote' (string).
     Optional 'start' and 'end' must be HH:MM if provided.
     Returns (valid_list_of_dicts, list_of_error_strings)
     """
@@ -33,9 +33,8 @@ def validate_bookings(raw: Any) -> Tuple[List[dict], List[str]]:
             continue
         try:
             remote = item.get('remote')
-            location = item.get('location')
-            if not remote and not location:
-                errors.append(f'Bookings[{i}]: either "remote" or "location" must be provided')
+            if not remote or not isinstance(remote, str):
+                errors.append(f'Bookings[{i}]: "remote" is required and must be a string')
                 continue
             start = item.get('start')
             end = item.get('end')
@@ -48,7 +47,6 @@ def validate_bookings(raw: Any) -> Tuple[List[dict], List[str]]:
             # Normalize keys
             validated = {
                 'remote': remote,
-                'location': location,
                 'start': start,
                 'end': end,
             }
