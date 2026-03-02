@@ -1,10 +1,14 @@
 import datetime
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from Functions import generate_report
 import importlib
 import os
 import json
 import html
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from flask_apscheduler import APScheduler
 
 # choose validation backend via env var: 'auto' (default), 'pydantic', 'jsonschema', 'pure'
 VALIDATOR_BACKEND = os.environ.get('VALIDATOR_BACKEND', 'auto').lower()
@@ -41,6 +45,52 @@ validate_executions = validation.validate_executions
 validate_blockers = validation.validate_blockers
 
 app = Flask(__name__)
+
+# Scheduler configuration
+class Config:
+    SCHEDULER_API_ENABLED = True
+
+app.config.from_object(Config())
+
+scheduler = APScheduler()
+scheduler.init_app(app)
+scheduler.start()
+
+
+def send_email_task(report_content, date_str):
+    """Background task to send email via SMTP."""
+    try:
+        smtp_server = os.environ.get('SMTP_SERVER')
+        smtp_port = int(os.environ.get('SMTP_PORT', 587))
+        sender_email = os.environ.get('SENDER_EMAIL')
+        sender_password = os.environ.get('SENDER_PASSWORD')
+        recipients = os.environ.get('EMAIL_RECIPIENTS', '').split(',')
+        cc_recipients = os.environ.get('EMAIL_CC', '').split(',')
+
+        if not all([smtp_server, sender_email, sender_password, recipients]):
+            print("Email configuration is missing in .env")
+            return
+
+        msg = MIMEMultipart()
+        msg['From'] = sender_email
+        msg['To'] = ", ".join(recipients)
+        if cc_recipients:
+            msg['Cc'] = ", ".join(cc_recipients)
+        msg['Subject'] = f"Daily Report {date_str}"
+
+        # Attach report as plain text
+        msg.attach(MIMEText(report_content, 'plain', 'utf-8'))
+
+        all_recipients = recipients + (cc_recipients if cc_recipients else [])
+        
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        server.starttls()
+        server.login(sender_email, sender_password)
+        server.send_message(msg, from_addr=sender_email, to_addrs=all_recipients)
+        server.quit()
+        print(f"Scheduled email sent successfully for {date_str}")
+    except Exception as e:
+        print(f"Error in send_email_task: {e}")
 
 
 @app.route('/')
@@ -99,7 +149,44 @@ def generate_report_route():
     # escape the report to avoid HTML injection, then convert newlines to <br> for HTML display
     report_safe = html.escape(report)
     report_html = report_safe.replace('\n', '<br>')
-    return render_template('report.html', report=report_html, date=date_today)
+    return render_template('report.html', report=report_html, date=date_today, report_raw=report)
+
+
+@app.route('/send_email', methods=['POST'])
+def send_email_route():
+    try:
+        data = request.get_json()
+        report_content = data.get('report_content', '')
+        schedule_time = data.get('schedule_time')  # Optional ISO format string
+        date_today = datetime.date.today().isoformat()
+
+        if schedule_time:
+            try:
+                # Expecting format 'YYYY-MM-DDTHH:MM' or similar that datetime.fromisoformat can handle
+                run_date = datetime.datetime.fromisoformat(schedule_time)
+                
+                # Check if the date is in the past
+                if run_date < datetime.datetime.now():
+                    return jsonify({'success': False, 'message': 'Scheduled time must be in the future.'}), 400
+                
+                # Schedule the task
+                job_id = f"email_{datetime.datetime.now().timestamp()}"
+                scheduler.add_job(
+                    id=job_id,
+                    func=send_email_task,
+                    trigger='date',
+                    run_date=run_date,
+                    args=[report_content, date_today]
+                )
+                return jsonify({'success': True, 'message': f'Email scheduled for {run_date.strftime("%Y-%m-%d %H:%M")}'})
+            except Exception as e:
+                return jsonify({'success': False, 'message': f'Invalid schedule time format: {e}'}), 400
+
+        # Immediate send logic (now using the same task function for consistency)
+        send_email_task(report_content, date_today)
+        return jsonify({'success': True, 'message': 'Email sent successfully!'})
+    except Exception as e:
+        return jsonify({'success': False, 'message': str(e)}), 500
 
 
 if __name__ == '__main__':

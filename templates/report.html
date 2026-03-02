@@ -4,7 +4,15 @@
     <div id="report">{{ report | safe }}</div>
     <br>
     <button id="downloadBtn">Download as .txt</button>
-    <button id="emailPlainBtn">Email (plain)</button>
+    <button id="sendEmailBtn">Send Email (SMTP)</button>
+    
+    <div id="scheduleContainer" style="display:inline-block; margin-left: 10px; padding: 5px; border: 1px solid #ccc; border-radius: 4px; background-color: #f9f9f9;">
+        <label for="scheduleTime">Schedule Email:</label>
+        <input type="datetime-local" id="scheduleTime">
+        <button id="scheduleEmailBtn">Schedule</button>
+    </div>
+
+    <button id="emailPlainBtn">Email (mailto)</button>
     <button id="emailHtmlBtn">Email (HTML)</button>
     <button id="copyEmailHtmlBtn">Copy Email HTML</button>
     <a href="/">Back</a>
@@ -27,6 +35,77 @@
         const blob = new Blob([text], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a'); a.href = url; a.download = 'daily_report.txt'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('sendEmailBtn').addEventListener('click', function(){
+        const reportContent = `{{ report_raw | safe }}`;
+        this.disabled = true;
+        this.innerText = 'Sending...';
+        
+        fetch('/send_email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ report_content: reportContent }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Email sent successfully!');
+            } else {
+                alert('Failed to send email: ' + data.message);
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('An error occurred while sending the email.');
+        })
+        .finally(() => {
+            this.disabled = false;
+            this.innerText = 'Send Email (SMTP)';
+        });
+    });
+
+    document.getElementById('scheduleEmailBtn').addEventListener('click', function(){
+        const reportContent = `{{ report_raw | safe }}`;
+        const scheduleTime = document.getElementById('scheduleTime').value;
+        
+        if (!scheduleTime) {
+            alert('Please select a date and time to schedule the email.');
+            return;
+        }
+
+        const btn = this;
+        btn.disabled = true;
+        btn.innerText = 'Scheduling...';
+        
+        fetch('/send_email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+                report_content: reportContent,
+                schedule_time: scheduleTime
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+            } else {
+                alert('Failed to schedule email: ' + data.message);
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('An error occurred while scheduling the email.');
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btn.innerText = 'Schedule';
+        });
     });
 
     document.getElementById('emailPlainBtn').addEventListener('click', function(){
