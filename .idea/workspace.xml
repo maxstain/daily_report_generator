@@ -5,21 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2bc39eec-bbdf-40e0-be56-27247d828054" name="Changes" comment="First commit">
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/DailyReportGenerator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DailyReportGenerator.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Functions/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Functions/jsonschema_validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/jsonschema_validation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Functions/pydantic_validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/pydantic_validation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Functions/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/validation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/form_helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/form_helpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/report.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_playwright_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_playwright_ui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_validation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Projects/Python/DailyReportGenerator" value="36FD6sAtjZ7EsGKoS1zNEgVgWrg" />
+    </persistenceIdMap>
+  </component>
+  <component name="CopilotUserSelectedModel">
+    <selectedModels>
+      <entry key="edit-panel" value="GPT-5 mini" />
+      <entry key="chat-panel" value="GPT-5 mini" />
+      <entry key="agent-panel" value="GPT-5 mini" />
+    </selectedModels>
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="2189" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -57,6 +66,10 @@
     &quot;accountId&quot;: &quot;5ba76bb4-504a-4887-85b5-cee9646ce87d&quot;
   }
 }</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -73,10 +86,13 @@
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;Flask server.DailyReportGenerator.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
@@ -90,6 +106,13 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecapSpentCounter">
+    <option name="endsOfQuotaMs" value="1770732064935" />
+    <option name="spentUsd" value="0.02004175" />
+  </component>
+  <component name="RecapUselessUpdatesCounter">
+    <option name="suspendCountdown" value="0" />
+  </component>
   <component name="RunManager">
     <configuration name="DailyReportGenerator" type="Python.FlaskServer">
       <module name="DailyReportGenerator" />
@@ -104,6 +127,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
@@ -111,8 +135,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-PY-252.28238.29" />
-        <option value="bundled-python-sdk-a101402ee41c-968fe969f28a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.28238.29" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.31033.139" />
+        <option value="bundled-python-sdk-2653e85de345-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.31033.139" />
       </set>
     </attachedChunks>
   </component>
@@ -126,7 +150,42 @@
       <workItem from="1764593254707" duration="11017000" />
       <workItem from="1764605291622" duration="67000" />
       <workItem from="1764663318187" duration="3670000" />
-      <workItem from="1764751161558" duration="6580000" />
+      <workItem from="1764751161558" duration="6614000" />
+      <workItem from="1765286747264" duration="1293000" />
+      <workItem from="1765291065458" duration="721000" />
+      <workItem from="1766048968440" duration="1462000" />
+      <workItem from="1766131961312" duration="1524000" />
+      <workItem from="1766153729278" duration="157000" />
+      <workItem from="1767946007385" duration="2814000" />
+      <workItem from="1768209885101" duration="1392000" />
+      <workItem from="1768293523372" duration="1387000" />
+      <workItem from="1768321474013" duration="238000" />
+      <workItem from="1768992452988" duration="572000" />
+      <workItem from="1768993087626" duration="1666000" />
+      <workItem from="1769000505389" duration="662000" />
+      <workItem from="1769159674742" duration="1385000" />
+      <workItem from="1769600568436" duration="143000" />
+      <workItem from="1769600846964" duration="698000" />
+      <workItem from="1769676013688" duration="1215000" />
+      <workItem from="1770366440324" duration="1252000" />
+      <workItem from="1770368176005" duration="1240000" />
+      <workItem from="1770389949785" duration="911000" />
+      <workItem from="1770653210377" duration="662000" />
+      <workItem from="1770820205365" duration="1448000" />
+      <workItem from="1771001849865" duration="35000" />
+      <workItem from="1771241200493" duration="315000" />
+      <workItem from="1771241572524" duration="728000" />
+      <workItem from="1771342774681" duration="708000" />
+      <workItem from="1771413976443" duration="672000" />
+      <workItem from="1771432894295" duration="407000" />
+      <workItem from="1771577406886" duration="1816000" />
+      <workItem from="1771834124340" duration="2754000" />
+      <workItem from="1771852592688" duration="61000" />
+      <workItem from="1771934950399" duration="1289000" />
+      <workItem from="1772025358212" duration="917000" />
+      <workItem from="1772104590329" duration="997000" />
+      <workItem from="1772198695390" duration="650000" />
+      <workItem from="1772436942008" duration="1494000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -176,7 +235,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764692813174</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="First commit">
+      <option name="closed" value="true" />
+      <created>1764780299635</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1764780299636</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,7 +254,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="First commit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/DailyReportGenerator$DailyReportGenerator.coverage" NAME="DailyReportGenerator Coverage Results" MODIFIED="1764779002633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/DailyReportGenerator$DailyReportGenerator.coverage" NAME="DailyReportGenerator Coverage Results" MODIFIED="1772436972704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
