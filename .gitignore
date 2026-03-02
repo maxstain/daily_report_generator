@@ -1,0 +1,18 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# pytest
+.pytest_cache/
+
+# PyCharm IDE
+.idea/
+
+# Environment variables
+.env
