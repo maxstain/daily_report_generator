@@ -1,4 +1,4 @@
-Flask~=3.1.2
+Flask~=3.1.3
 
 # Optional validation backends. Install only if you want to enable them:
 # pip install pydantic
@@ -11,4 +11,3 @@ jsonschema~=4.25.1
 # pip install playwright pytest-playwright
 playwright
 pytest-playwright
-Flask-APScheduler~=1.13.1

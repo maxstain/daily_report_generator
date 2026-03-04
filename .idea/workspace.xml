@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2bc39eec-bbdf-40e0-be56-27247d828054" name="Changes" comment="refactor: simplify project configuration and update workspace settings">
+    <list default="true" id="2bc39eec-bbdf-40e0-be56-27247d828054" name="Changes" comment="feat: add email scheduling and sending functionality with Flask-APScheduler">
       <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
@@ -188,7 +188,9 @@
       <workItem from="1772104590329" duration="997000" />
       <workItem from="1772198695390" duration="650000" />
       <workItem from="1772436942008" duration="2212000" />
-      <workItem from="1772458366377" duration="546000" />
+      <workItem from="1772458366377" duration="1279000" />
+      <workItem from="1772524211258" duration="1561000" />
+      <workItem from="1772618660176" duration="1806000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -254,7 +256,23 @@
       <option name="project" value="LOCAL" />
       <updated>1772457375299</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="chore: add .gitignore for Python project and IDE settings">
+      <option name="closed" value="true" />
+      <created>1772458939791</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1772458939791</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: add email scheduling and sending functionality with Flask-APScheduler">
+      <option name="closed" value="true" />
+      <created>1772460745009</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1772460745009</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,10 +281,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
     <MESSAGE value="refactor: simplify project configuration and update workspace settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: simplify project configuration and update workspace settings" />
+    <MESSAGE value="chore: add .gitignore for Python project and IDE settings" />
+    <MESSAGE value="feat: add email scheduling and sending functionality with Flask-APScheduler" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add email scheduling and sending functionality with Flask-APScheduler" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/DailyReportGenerator$DailyReportGenerator.coverage" NAME="DailyReportGenerator Coverage Results" MODIFIED="1772458034515" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/DailyReportGenerator$DailyReportGenerator.coverage" NAME="DailyReportGenerator Coverage Results" MODIFIED="1772619129097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
