@@ -19,6 +19,7 @@ This is my daily report for today {date}:
 
 🚧 Blockers / Issues Encountered:
     - {blockers_block}
+{extra_tasks_block}
 _____________________________
 Best Regards.
 """
@@ -113,6 +114,19 @@ def _format_blockers(blockers: List[str]) -> str:
     return "\n    - ".join(blockers)
 
 
+def _format_extra_tasks(extra_tasks: List[str]) -> str:
+    """Format the extra tasks list into the template block.
+    If no extra tasks are provided, return an empty string.
+    """
+    if not extra_tasks:
+        return ""
+
+    lines = ["", "📝 Extra Tasks:"]
+    for task in extra_tasks:
+        lines.append(f"    - {task}")
+    return "\n".join(lines)
+
+
 def _coerce_date(date_in: Optional[Union[str, datetime.date]]) -> str:
     """Return an ISO date string for the template. Accepts str or datetime.date or None."""
     if not date_in:
@@ -128,7 +142,7 @@ def _coerce_date(date_in: Optional[Union[str, datetime.date]]) -> str:
         return str(date_in)
 
 
-def generate_report(bookings: List[Dict[str, Any]], executions: List[Dict[str, Any]], blockers: List[str], date: Optional[Union[str, datetime.date]] = None) -> str:
+def generate_report(bookings: List[Dict[str, Any]], executions: List[Dict[str, Any]], blockers: List[str], date: Optional[Union[str, datetime.date]] = None, extra_tasks: Optional[List[str]] = None) -> str:
     """Generate the daily report string based on provided data.
 
     Inputs:
@@ -136,6 +150,7 @@ def generate_report(bookings: List[Dict[str, Any]], executions: List[Dict[str, A
     - executions: list of dicts. Each dict may include id, summary, tests (list)
     - blockers: list of strings
     - date: optional date (str in ISO format or datetime.date). If omitted, uses today's date.
+    - extra_tasks: optional list of strings
 
     Output: multi-line string ready for sending or printing.
     """
@@ -143,12 +158,14 @@ def generate_report(bookings: List[Dict[str, Any]], executions: List[Dict[str, A
     bookings = bookings or []
     executions = executions or []
     blockers = blockers or []
+    extra_tasks = extra_tasks or []
 
     date_str = _coerce_date(date)
     bench_block = _format_bookings(bookings)
     planned_block = _format_planned_executions(executions)
     executed_block = _format_executed_cases(executions)
     blockers_block = _format_blockers(blockers)
+    extra_tasks_block = _format_extra_tasks(extra_tasks)
 
     report = TEMPLATE.format(
         date=date_str,
@@ -156,6 +173,7 @@ def generate_report(bookings: List[Dict[str, Any]], executions: List[Dict[str, A
         planned_executions_block=planned_block,
         executed_cases_block=executed_block,
         blockers_block=blockers_block,
+        extra_tasks_block=extra_tasks_block,
     )
     logging.debug(report)
     return report

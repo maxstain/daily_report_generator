@@ -144,3 +144,25 @@ def validate_blockers(raw: Any) -> Tuple[List[str], List[str]]:
             continue
         valid.append(b)
     return valid, errors
+
+
+def validate_extra_tasks(raw: Any) -> Tuple[List[str], List[str]]:
+    errors: List[str] = []
+    valid: List[str] = []
+    if raw is None:
+        return [], []
+    if isinstance(raw, str):
+        lines = [line.strip() for line in raw.splitlines() if line.strip()]
+    elif isinstance(raw, list):
+        lines = raw
+    else:
+        return [], ['Extra tasks must be a newline-separated string or an array of strings']
+    for i, t in enumerate(lines):
+        if not isinstance(t, str):
+            errors.append(f'Extra Task[{i}] must be a string')
+            continue
+        if len(t) > 1000:
+            errors.append(f'Extra Task[{i}] is too long')
+            continue
+        valid.append(t)
+    return valid, errors

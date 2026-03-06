@@ -46,3 +46,16 @@ def test_validate_blockers():
     assert errors == []
     assert valid == ["issue one", "issue two"]
 
+
+def test_validate_extra_tasks():
+    raw = "task one\ntask two"
+    valid, errors = validation.validate_extra_tasks(raw)
+    assert errors == []
+    assert valid == ["task one", "task two"]
+
+
+def test_validate_extra_tasks_none():
+    valid, errors = validation.validate_extra_tasks(None)
+    assert errors == []
+    assert valid == []
+

@@ -69,6 +69,15 @@
         <div id="blockers_error" class="error-note" style="display:none"></div>
         <br>
 
+        <label for="extra_tasks_text">Extra Tasks (optional, one per line)</label>
+        <div class="field-controls">
+            <button type="button" class="small-btn" onclick="copyField('extra_tasks_text')">Copy</button>
+        </div>
+        <br>
+        <textarea id="extra_tasks_text" name="extra_tasks_text" rows="3">{{ extra_tasks_text or '' }}</textarea>
+        <div id="extra_tasks_error" class="error-note" style="display:none"></div>
+        <br>
+
         <div>
             <h3>Preview</h3>
             <pre id="livePreview" style="background:#f9f9f9;padding:10px;border-radius:6px;border:1px solid #eee;white-space:pre-wrap;max-height:250px;overflow:auto"></pre>
@@ -104,6 +113,8 @@
         const bookingsErrDiv = document.getElementById('bookings_error');
         const executionsErrDiv = document.getElementById('executions_error');
         const blockersErrDiv = document.getElementById('blockers_error');
+        const extraTasksField = document.getElementById('extra_tasks_text');
+        const extraTasksErrDiv = document.getElementById('extra_tasks_error');
         const livePreview = document.getElementById('livePreview');
         const advancedEditor = document.getElementById('advancedEditor');
         const advancedTextArea = document.getElementById('advanced_bookings_editor');
@@ -189,8 +200,13 @@
         function updatePreview(){
             const bookings = FH.collectBookingGroups();
             const execs = FH.collectTeGroups();
-            livePreview.innerText = FH.generatePreviewText(bookings, execs);
+            const extraTasks = extraTasksField.value ? extraTasksField.value.split('\n').map(s=>s.trim()).filter(Boolean) : [];
+            livePreview.innerText = FH.generatePreviewText(bookings, execs, extraTasks);
         }
+
+        // Attach listeners to simple textareas
+        blockersField.addEventListener('input', updatePreview);
+        extraTasksField.addEventListener('input', updatePreview);
 
         // Advanced JSON editor (CodeMirror)
         let cmEditor = null;

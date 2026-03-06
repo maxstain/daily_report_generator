@@ -32,7 +32,7 @@
         return TIME_RE.test(time);
     }
 
-    function generatePreviewText(bookings, executions){
+    function generatePreviewText(bookings, executions, extraTasks){
         // return a compact readable preview
         let out = '';
         out += 'Bookings:\n';
@@ -49,6 +49,12 @@
                 ex.tests.forEach(function(t){ out += `      * ${t}\n`; });
             }
         });
+        if(extraTasks && extraTasks.length > 0) {
+            out += '\nExtra Tasks:\n';
+            extraTasks.forEach(function(t, i){
+                out += `  - ${t}\n`;
+            });
+        }
         return out;
     }
 
