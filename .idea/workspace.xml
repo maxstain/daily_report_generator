@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2bc39eec-bbdf-40e0-be56-27247d828054" name="Changes" comment="refactor: remove email scheduling and sending functionality from app">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Functions/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Functions/jsonschema_validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/jsonschema_validation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Functions/pydantic_validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/pydantic_validation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Functions/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/validation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/form_helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/form_helpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_validation.py" afterDir="false" />
-    </list>
+    <list default="true" id="2bc39eec-bbdf-40e0-be56-27247d828054" name="Changes" comment="feat: add support for extra tasks in report generation and validation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -196,7 +186,8 @@
       <workItem from="1772524211258" duration="1561000" />
       <workItem from="1772618660176" duration="1990000" />
       <workItem from="1772701324711" duration="2657000" />
-      <workItem from="1772799200089" duration="694000" />
+      <workItem from="1772799200089" duration="727000" />
+      <workItem from="1773055476823" duration="7000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -286,7 +277,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772630701127</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat: add support for extra tasks in report generation and validation">
+      <option name="closed" value="true" />
+      <created>1772808952579</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1772808952580</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,7 +297,8 @@
     <MESSAGE value="chore: add .gitignore for Python project and IDE settings" />
     <MESSAGE value="feat: add email scheduling and sending functionality with Flask-APScheduler" />
     <MESSAGE value="refactor: remove email scheduling and sending functionality from app" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: remove email scheduling and sending functionality from app" />
+    <MESSAGE value="feat: add support for extra tasks in report generation and validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add support for extra tasks in report generation and validation" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DailyReportGenerator$DailyReportGenerator.coverage" NAME="DailyReportGenerator Coverage Results" MODIFIED="1772799253943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
