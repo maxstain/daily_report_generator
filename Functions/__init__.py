@@ -14,7 +14,7 @@ This is my daily report for today {date}:
 ✅ Planned Test Executions (Before Bench Booking):
 {planned_executions_block}
 
-🧪 Executed Test Cases:
+🧪 Executed Test Cases: {total_testcases_number} TCs
 {executed_cases_block}
 
 🚧 Blockers / Issues Encountered:
@@ -64,46 +64,62 @@ def _format_planned_executions(executions: List[Dict[str, Any]]) -> str:
     return "\n".join(lines)
 
 
-def _format_executed_cases(executions: List[Dict[str, Any]]) -> str:
-    """Format executed test cases.
+def _count_testcases(executions: List[Dict[str, Any]]) -> int:
+    """Count structured executed test cases across all executions."""
+    total = 0
 
-    Each execution may include a "tests" list of dicts: {"id": "SECONPRO-3930", "result": "Fail"}
-    If no tests are provided, show a helpful message.
+    for ex in executions:
+        tests = ex.get("tests")
+        if tests and isinstance(tests, list):
+            total += len(tests)
+            continue
+
+        test_ids = ex.get("test_ids")
+        if test_ids and isinstance(test_ids, list):
+            total += len(test_ids)
+
+    return total
+
+
+def _format_executed_cases(executions: List[Dict[str, Any]]) -> str:
+    """Format executed test cases into the template block.
+
+    Expected execution item may include 'id' (TE id), 'tests' (list) or 'test_ids' (list).
     """
     if not executions:
-        return "    - No executed test cases recorded."
+        return "    - None"
 
     lines = []
-    for idx, ex in enumerate(executions, start=1):
-        lines.append(f"    - TE {idx}:")
+    for ex in executions:
+        ex_id = ex.get("id", "Unknown")
+
+        # Check if there are any tests to report
         tests = ex.get("tests")
-        # If the execution carries a flat list of test ids under key "test_ids" also support it.
+        test_ids = ex.get("test_ids")
+
+        if not tests and not test_ids:
+            continue
+
+        lines.append(f"    - {ex_id}:")
+
         if tests and isinstance(tests, list):
             for t in tests:
-                # t can be a string or dict
                 if isinstance(t, str):
                     lines.append(f"        * {t}")
                 elif isinstance(t, dict):
                     tid = t.get("id", "Unknown")
-                    result = t.get("result")
+                    result = t.get("result", "")
                     if result:
                         lines.append(f"        * {tid}: {result}")
                     else:
                         lines.append(f"        * {tid}")
-        else:
-            # try fallback: maybe this execution is itself a single test id under 'id' and 'result'
-            # or there may be a top-level 'test_ids' list
-            test_ids = ex.get("test_ids")
-            if test_ids and isinstance(test_ids, list):
-                for tid in test_ids:
-                    lines.append(f"        * {tid}")
-            else:
-                # Nothing structured - mention the execution id as placeholder
-                ex_id = ex.get("id")
-                if ex_id:
-                    lines.append(f"        * {ex_id} (no testcases provided)")
-                else:
-                    lines.append("        - No tests recorded for this TE")
+        elif test_ids and isinstance(test_ids, list):
+            for tid in test_ids:
+                lines.append(f"        * {tid}")
+
+    if not lines:
+        return "    - None"
+
     return "\n".join(lines)
 
 
@@ -160,6 +176,7 @@ def generate_report(bookings: List[Dict[str, Any]], executions: List[Dict[str, A
     blockers = blockers or []
     extra_tasks = extra_tasks or []
 
+    total_tcs = _count_testcases(executions)
     date_str = _coerce_date(date)
     bench_block = _format_bookings(bookings)
     planned_block = _format_planned_executions(executions)
@@ -171,6 +188,7 @@ def generate_report(bookings: List[Dict[str, Any]], executions: List[Dict[str, A
         date=date_str,
         bench_booking_block=bench_block,
         planned_executions_block=planned_block,
+        total_testcases_number=total_tcs,
         executed_cases_block=executed_block,
         blockers_block=blockers_block,
         extra_tasks_block=extra_tasks_block,
