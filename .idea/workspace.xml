@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2bc39eec-bbdf-40e0-be56-27247d828054" name="Changes" comment="feat: enhance test case reporting with total count and improved formatting logic">
+    <list default="true" id="2bc39eec-bbdf-40e0-be56-27247d828054" name="Changes" comment="feat: add executable app file (app.exe) to distribution">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +26,7 @@
     </selectedModels>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="151" />
+    <option name="cachedIndexableFilesCount" value="152" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -58,35 +59,35 @@
     &quot;assignee&quot;: &quot;maxstain&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/maxstain/daily_report_generator.git",
-    "accountId": "0561ca00-6dd2-4585-bb40-ef2d7114b664"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/maxstain/daily_report_generator.git&quot;,
+    &quot;accountId&quot;: &quot;0561ca00-6dd2-4585-bb40-ef2d7114b664&quot;
   }
-}]]></component>
+}</component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.9161426004382898" />
-      <entry key="MS500" value="4.302104172397168" />
-      <entry key="S2" value="10.776404542508375" />
-      <entry key="S5" value="23.067990333129945" />
-      <entry key="S10" value="36.027095064430156" />
-      <entry key="S30" value="55.0552324479423" />
-      <entry key="S60" value="64.4074932061262" />
-      <entry key="M2" value="71.28606887916109" />
-      <entry key="M5" value="76.66715834836212" />
-      <entry key="M10" value="78.74744312024207" />
-      <entry key="M15" value="79.47817585062229" />
-      <entry key="M30" value="80.2287706595671" />
-      <entry key="H1" value="80.61175646450044" />
-      <entry key="H2" value="80.80521470848916" />
-      <entry key="H4" value="80.9024406776436" />
-      <entry key="D1" value="80.98371689554085" />
-      <entry key="W1" value="80.99767327274354" />
+      <entry key="MS100" value="2.0116532266015907" />
+      <entry key="MS500" value="2.733277375650375" />
+      <entry key="S2" value="2.9290713357861264" />
+      <entry key="S5" value="2.9722999935578027" />
+      <entry key="S10" value="3.2108172121548115" />
+      <entry key="S30" value="13.885050293662458" />
+      <entry key="S60" value="33.67472935137576" />
+      <entry key="M2" value="55.71943820772651" />
+      <entry key="M5" value="76.8267629519901" />
+      <entry key="M10" value="85.80207626509419" />
+      <entry key="M15" value="89.05666531974572" />
+      <entry key="M30" value="92.45359830609706" />
+      <entry key="H1" value="94.2076545625347" />
+      <entry key="H2" value="95.09898208671514" />
+      <entry key="H4" value="95.54827227290521" />
+      <entry key="D1" value="95.92454213334929" />
+      <entry key="W1" value="95.98921613529632" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -108,23 +109,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.8230609145458958" />
-      <entry key="MS500" value="4.258581291934158" />
-      <entry key="S2" value="10.747894844658783" />
-      <entry key="S5" value="23.043392833918457" />
-      <entry key="S10" value="36.00761090211498" />
-      <entry key="S30" value="55.04048303932433" />
-      <entry key="S60" value="64.39439307795776" />
-      <entry key="M2" value="71.2764667643532" />
-      <entry key="M5" value="76.6621870254357" />
-      <entry key="M10" value="78.74472244185745" />
-      <entry key="M15" value="79.47630575830578" />
-      <entry key="M30" value="80.2278063703781" />
-      <entry key="H1" value="80.61126679794691" />
-      <entry key="H2" value="80.80496796770247" />
-      <entry key="H4" value="80.9023168269558" />
-      <entry key="D1" value="80.98369618676018" />
-      <entry key="W1" value="80.99767031270167" />
+      <entry key="MS100" value="1.8598093028963634" />
+      <entry key="MS500" value="2.6906611671150142" />
+      <entry key="S2" value="2.917588210665496" />
+      <entry key="S5" value="2.967631371921844" />
+      <entry key="S10" value="3.2081625498769215" />
+      <entry key="S30" value="13.87975775013464" />
+      <entry key="S60" value="33.666596363861025" />
+      <entry key="M2" value="55.711245532314365" />
+      <entry key="M5" value="76.82154216059138" />
+      <entry key="M10" value="85.79900536823722" />
+      <entry key="M15" value="89.05450245219062" />
+      <entry key="M30" value="92.45245537203509" />
+      <entry key="H1" value="94.20706698765342" />
+      <entry key="H2" value="95.098684177114" />
+      <entry key="H4" value="95.5481222754325" />
+      <entry key="D1" value="95.92451698791427" />
+      <entry key="W1" value="95.9892125395057" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -138,35 +139,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Flask server.DailyReportGenerator.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.daily_report_generator.executor": "Run",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ai.playground.ignore.import.keys.banner.in.settings": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "C:/Projects/Python/daily_report_generator",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Flask server.DailyReportGenerator.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.daily_report_generator.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Shell Script.Generate app.executor&quot;: &quot;Run&quot;,
+    &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Projects/Python/daily_report_generator&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecapSpentCounter">
     <option name="endsOfQuotaMs" value="1770732064935" />
     <option name="spentUsd" value="0.02004175" />
@@ -174,7 +176,7 @@
   <component name="RecapUselessUpdatesCounter">
     <option name="suspendCountdown" value="0" />
   </component>
-  <component name="RunManager" selected="Shell Script.Generate app">
+  <component name="RunManager" selected="Flask server.DailyReportGenerator">
     <configuration name="daily_report_generator" type="PythonConfigurationType" factoryName="Python">
       <module name="daily_report_generator" />
       <option name="ENV_FILES" value="" />
@@ -244,7 +246,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-c59985aa861c-c2ffad84badb-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.24374.152" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-PY-261.26222.68" />
+        <option value="bundled-python-sdk-50341a9f1f9c-c2ffad84badb-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.26222.68" />
       </set>
     </attachedChunks>
   </component>
@@ -304,7 +307,16 @@
       <workItem from="1775554743123" duration="796000" />
       <workItem from="1775555706523" duration="638000" />
       <workItem from="1775556603342" duration="385000" />
-      <workItem from="1781511749397" duration="3047000" />
+      <workItem from="1781511749397" duration="3373000" />
+      <workItem from="1781531921142" duration="1115000" />
+      <workItem from="1781798383042" duration="287000" />
+      <workItem from="1781883484959" duration="523000" />
+      <workItem from="1782399423947" duration="673000" />
+      <workItem from="1782476579259" duration="1317000" />
+      <workItem from="1782491320032" duration="508000" />
+      <workItem from="1784023455270" duration="255000" />
+      <workItem from="1784023841547" duration="695000" />
+      <workItem from="1784212264634" duration="1373000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -418,7 +430,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781530561619</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat: add executable app file (app.exe) to distribution">
+      <option name="closed" value="true" />
+      <created>1781530948731</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1781530948731</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -433,9 +453,11 @@
     <MESSAGE value="feat: add support for extra tasks in report generation and validation" />
     <MESSAGE value="chore: update .gitignore and add app.spec for packaging configuration" />
     <MESSAGE value="feat: enhance test case reporting with total count and improved formatting logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: enhance test case reporting with total count and improved formatting logic" />
+    <MESSAGE value="feat: add executable app file (app.exe) to distribution" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add executable app file (app.exe) to distribution" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/daily_report_generator$DailyReportGenerator.coverage" NAME="DailyReportGenerator Coverage Results" MODIFIED="1784212336862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/daily_report_generator$daily_report_generator.coverage" NAME="daily_report_generator Coverage Results" MODIFIED="1781530631407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/DailyReportGenerator$DailyReportGenerator.coverage" NAME="DailyReportGenerator Coverage Results" MODIFIED="1772799253943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
