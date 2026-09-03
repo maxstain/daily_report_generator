@@ -12,3 +12,5 @@ jsonschema
 playwright
 pytest-playwright
 auto-py-to-exe
+
+dotenv-python

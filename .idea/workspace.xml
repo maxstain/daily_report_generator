@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2bc39eec-bbdf-40e0-be56-27247d828054" name="Changes" comment="feat: add executable app file (app.exe) to distribution">
+    <list default="true" id="2bc39eec-bbdf-40e0-be56-27247d828054" name="Changes" comment="chore: remove version constraints from requirements.txt dependencies">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Functions/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Functions/jsonschema_validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/jsonschema_validation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Functions/pydantic_validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/pydantic_validation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Functions/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Functions/validation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/form_helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/form_helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_validation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +23,7 @@
   <component name="CopilotPersistence">
     <persistenceIdMap>
       <entry key="_C:/Projects/Python/DailyReportGenerator" value="36FD6sAtjZ7EsGKoS1zNEgVgWrg" />
+      <entry key="_C:/Projects/Python/daily_report_generator" value="3HOzrxjXLgGNHQ2d2YNWSZkJ19h" />
     </persistenceIdMap>
   </component>
   <component name="CopilotUserSelectedModel">
@@ -62,7 +70,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/maxstain/daily_report_generator.git&quot;,
-    &quot;accountId&quot;: &quot;0561ca00-6dd2-4585-bb40-ef2d7114b664&quot;
+    &quot;accountId&quot;: &quot;90ab0094-f48e-4195-9cca-22ec4ade2d9f&quot;
   }
 }</component>
   <component name="McpProjectServerCommands">
@@ -71,23 +79,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.0116532266015907" />
-      <entry key="MS500" value="2.733277375650375" />
-      <entry key="S2" value="2.9290713357861264" />
-      <entry key="S5" value="2.9722999935578027" />
-      <entry key="S10" value="3.2108172121548115" />
-      <entry key="S30" value="13.885050293662458" />
-      <entry key="S60" value="33.67472935137576" />
-      <entry key="M2" value="55.71943820772651" />
-      <entry key="M5" value="76.8267629519901" />
-      <entry key="M10" value="85.80207626509419" />
-      <entry key="M15" value="89.05666531974572" />
-      <entry key="M30" value="92.45359830609706" />
-      <entry key="H1" value="94.2076545625347" />
-      <entry key="H2" value="95.09898208671514" />
-      <entry key="H4" value="95.54827227290521" />
-      <entry key="D1" value="95.92454213334929" />
-      <entry key="W1" value="95.98921613529632" />
+      <entry key="MS100" value="1.6239444256733533" />
+      <entry key="MS500" value="4.483630379732328" />
+      <entry key="S2" value="12.984323001054491" />
+      <entry key="S5" value="26.574964678502187" />
+      <entry key="S10" value="40.5637835902623" />
+      <entry key="S30" value="69.05297624670874" />
+      <entry key="S60" value="97.34796776037237" />
+      <entry key="M2" value="132.06723366793744" />
+      <entry key="M5" value="170.54733495938945" />
+      <entry key="M10" value="188.49170757782775" />
+      <entry key="M15" value="195.2277113903853" />
+      <entry key="M30" value="202.38687265407833" />
+      <entry key="H1" value="206.13467184935095" />
+      <entry key="H2" value="208.05238394190812" />
+      <entry key="H4" value="209.02242081815996" />
+      <entry key="D1" value="209.83654352494167" />
+      <entry key="W1" value="209.97663614117403" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -109,23 +117,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.8598093028963634" />
-      <entry key="MS500" value="2.6906611671150142" />
-      <entry key="S2" value="2.917588210665496" />
-      <entry key="S5" value="2.967631371921844" />
-      <entry key="S10" value="3.2081625498769215" />
-      <entry key="S30" value="13.87975775013464" />
-      <entry key="S60" value="33.666596363861025" />
-      <entry key="M2" value="55.711245532314365" />
-      <entry key="M5" value="76.82154216059138" />
-      <entry key="M10" value="85.79900536823722" />
-      <entry key="M15" value="89.05450245219062" />
-      <entry key="M30" value="92.45245537203509" />
-      <entry key="H1" value="94.20706698765342" />
-      <entry key="H2" value="95.098684177114" />
-      <entry key="H4" value="95.5481222754325" />
-      <entry key="D1" value="95.92451698791427" />
-      <entry key="W1" value="95.9892125395057" />
+      <entry key="MS100" value="1.5315021966768556" />
+      <entry key="MS500" value="4.432028423692061" />
+      <entry key="S2" value="12.947560151713368" />
+      <entry key="S5" value="26.544204440546604" />
+      <entry key="S10" value="40.53989239278429" />
+      <entry key="S30" value="69.03789553438077" />
+      <entry key="S60" value="97.33516972299398" />
+      <entry key="M2" value="132.05629512637105" />
+      <entry key="M5" value="170.5403860758195" />
+      <entry key="M10" value="188.4875501923393" />
+      <entry key="M15" value="195.2247608822149" />
+      <entry key="M30" value="202.38530005951787" />
+      <entry key="H1" value="206.13385962264618" />
+      <entry key="H2" value="208.05197113603222" />
+      <entry key="H4" value="209.0222127151096" />
+      <entry key="D1" value="209.8365086026495" />
+      <entry key="W1" value="209.97663114640508" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -134,6 +142,21 @@
   <component name="ProjectId" id="36FD6sAtjZ7EsGKoS1zNEgVgWrg" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectSessionTemplates">
+    <option name="panelTemplate">
+      <template>
+        <option name="modeId" value="Agent" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_id" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="BACKGROUND" />
+        <option name="worktreeMode" value="WORKSPACE" />
+      </template>
+    </option>
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -155,6 +178,7 @@
     &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
@@ -165,6 +189,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -176,7 +201,7 @@
   <component name="RecapUselessUpdatesCounter">
     <option name="suspendCountdown" value="0" />
   </component>
-  <component name="RunManager" selected="Flask server.DailyReportGenerator">
+  <component name="RunManager" selected="Python.daily_report_generator">
     <configuration name="daily_report_generator" type="PythonConfigurationType" factoryName="Python">
       <module name="daily_report_generator" />
       <option name="ENV_FILES" value="" />
@@ -238,7 +263,6 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Flask server.DailyReportGenerator" />
       <item itemvalue="Python.daily_report_generator" />
       <item itemvalue="Shell Script.Generate app" />
     </list>
@@ -246,8 +270,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-PY-261.26222.68" />
-        <option value="bundled-python-sdk-50341a9f1f9c-c2ffad84badb-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.26222.68" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-PY-262.9437.214" />
+        <option value="bundled-python-sdk-821f704e66d9-5bd6d13a2a75-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-262.9437.214" />
       </set>
     </attachedChunks>
   </component>
@@ -317,6 +341,26 @@
       <workItem from="1784023455270" duration="255000" />
       <workItem from="1784023841547" duration="695000" />
       <workItem from="1784212264634" duration="1373000" />
+      <workItem from="1784627461695" duration="1189000" />
+      <workItem from="1784805209312" duration="3244000" />
+      <workItem from="1785225313777" duration="2156000" />
+      <workItem from="1785234550469" duration="198000" />
+      <workItem from="1785235087386" duration="1330000" />
+      <workItem from="1785416997403" duration="729000" />
+      <workItem from="1785752809137" duration="742000" />
+      <workItem from="1785753621712" duration="74000" />
+      <workItem from="1785753967605" duration="79000" />
+      <workItem from="1785754127156" duration="1829000" />
+      <workItem from="1786012189315" duration="1306000" />
+      <workItem from="1786093971325" duration="1542000" />
+      <workItem from="1786098956565" duration="261000" />
+      <workItem from="1786099248365" duration="1556000" />
+      <workItem from="1786111183755" duration="4000" />
+      <workItem from="1786351641010" duration="56000" />
+      <workItem from="1786351725715" duration="47000" />
+      <workItem from="1788363662641" duration="408000" />
+      <workItem from="1788364297179" duration="353000" />
+      <workItem from="1788451208758" duration="2017000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -438,7 +482,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781530948731</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="chore: remove version constraints from requirements.txt dependencies">
+      <option name="closed" value="true" />
+      <created>1784641500725</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1784641500725</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -454,12 +506,13 @@
     <MESSAGE value="chore: update .gitignore and add app.spec for packaging configuration" />
     <MESSAGE value="feat: enhance test case reporting with total count and improved formatting logic" />
     <MESSAGE value="feat: add executable app file (app.exe) to distribution" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add executable app file (app.exe) to distribution" />
+    <MESSAGE value="chore: remove version constraints from requirements.txt dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: remove version constraints from requirements.txt dependencies" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/daily_report_generator$DailyReportGenerator.coverage" NAME="DailyReportGenerator Coverage Results" MODIFIED="1784212336862" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/daily_report_generator$daily_report_generator.coverage" NAME="daily_report_generator Coverage Results" MODIFIED="1781530631407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/daily_report_generator$DailyReportGenerator.coverage" NAME="DailyReportGenerator Coverage Results" MODIFIED="1785753990074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/DailyReportGenerator$DailyReportGenerator.coverage" NAME="DailyReportGenerator Coverage Results" MODIFIED="1772799253943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/daily_report_generator$daily_report_generator.coverage" NAME="daily_report_generator Coverage Results" MODIFIED="1781530631407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

@@ -122,3 +122,25 @@ def validate_extra_tasks(raw: Any) -> Tuple[List[str], List[str]]:
             continue
         valid.append(t)
     return valid, errors
+
+
+def validate_pv9_actions(raw: Any) -> Tuple[List[str], List[str]]:
+    if raw is None:
+        return [], []
+    if isinstance(raw, str):
+        lines = [line.strip() for line in raw.splitlines() if line.strip()]
+    elif isinstance(raw, list):
+        lines = raw
+    else:
+        return [], ['PV9 actions must be a newline-separated string or an array of strings']
+    errors = []
+    valid = []
+    for i, a in enumerate(lines):
+        if not isinstance(a, str):
+            errors.append(f'PV9 Action[{i}] must be a string')
+            continue
+        if len(a) > 1000:
+            errors.append(f'PV9 Action[{i}] is too long')
+            continue
+        valid.append(a)
+    return valid, errors

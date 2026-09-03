@@ -78,6 +78,15 @@
         <div id="extra_tasks_error" class="error-note" style="display:none"></div>
         <br>
 
+        <label for="pv9_actions_text">PV9 Actions (optional, one per line)</label>
+        <div class="field-controls">
+            <button type="button" class="small-btn" onclick="copyField('pv9_actions_text')">Copy</button>
+        </div>
+        <br>
+        <textarea id="pv9_actions_text" name="pv9_actions_text" rows="3">{{ pv9_actions_text or '' }}</textarea>
+        <div id="pv9_actions_error" class="error-note" style="display:none"></div>
+        <br>
+
         <div>
             <h3>Preview</h3>
             <pre id="livePreview" style="background:#f9f9f9;padding:10px;border-radius:6px;border:1px solid #eee;white-space:pre-wrap;max-height:250px;overflow:auto"></pre>
@@ -115,6 +124,8 @@
         const blockersErrDiv = document.getElementById('blockers_error');
         const extraTasksField = document.getElementById('extra_tasks_text');
         const extraTasksErrDiv = document.getElementById('extra_tasks_error');
+        const pv9ActionsField = document.getElementById('pv9_actions_text');
+        const pv9ActionsErrDiv = document.getElementById('pv9_actions_error');
         const livePreview = document.getElementById('livePreview');
         const advancedEditor = document.getElementById('advancedEditor');
         const advancedTextArea = document.getElementById('advanced_bookings_editor');
@@ -186,6 +197,15 @@
 
         window.copyBookings = function(){ const arr = FH.collectBookingGroups(); navigator.clipboard.writeText(JSON.stringify(arr,null,2)); showError('Bookings JSON copied'); setTimeout(clearError,1200); }
 
+        window.copyField = function(id){
+            const el = document.getElementById(id);
+            if(el){
+                navigator.clipboard.writeText(el.value);
+                showError('Copied to clipboard');
+                setTimeout(clearError, 1200);
+            }
+        };
+
         window.insertSample = function(fieldId, type){
             if(fieldId === 'executions_group'){ createTeGroup({id: 'SECONPRO-30511', summary: 'Example', tests: ['SECONPRO-3930','SECONPRO-3954']}); return; }
             if(fieldId === 'bookings_group'){ createBookingRow({remote:'remote 1', start:'08:30', end:'12:30'}); return; }
@@ -201,12 +221,14 @@
             const bookings = FH.collectBookingGroups();
             const execs = FH.collectTeGroups();
             const extraTasks = extraTasksField.value ? extraTasksField.value.split('\n').map(s=>s.trim()).filter(Boolean) : [];
-            livePreview.innerText = FH.generatePreviewText(bookings, execs, extraTasks);
+            const pv9Actions = pv9ActionsField.value ? pv9ActionsField.value.split('\n').map(s=>s.trim()).filter(Boolean) : [];
+            livePreview.innerText = FH.generatePreviewText(bookings, execs, extraTasks, pv9Actions);
         }
 
         // Attach listeners to simple textareas
         blockersField.addEventListener('input', updatePreview);
         extraTasksField.addEventListener('input', updatePreview);
+        pv9ActionsField.addEventListener('input', updatePreview);
 
         // Advanced JSON editor (CodeMirror)
         let cmEditor = null;
@@ -304,6 +326,20 @@
                         let note = g.querySelector('.inline-error'); if(!note){ note = document.createElement('div'); note.className='error-note inline-error'; g.appendChild(note); }
                         note.innerText = msg;
                     }
+                    return;
+                }
+                const etMatch = err.match(/^Extra Task/);
+                if(etMatch){
+                    extraTasksField.classList.add('field-error');
+                    extraTasksErrDiv.style.display = 'block';
+                    extraTasksErrDiv.innerText = err;
+                    return;
+                }
+                const pvMatch = err.match(/^PV9 Action/);
+                if(pvMatch){
+                    pv9ActionsField.classList.add('field-error');
+                    pv9ActionsErrDiv.style.display = 'block';
+                    pv9ActionsErrDiv.innerText = err;
                     return;
                 }
             });

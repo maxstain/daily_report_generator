@@ -40,6 +40,7 @@ validate_bookings = validation.validate_bookings
 validate_executions = validation.validate_executions
 validate_blockers = validation.validate_blockers
 validate_extra_tasks = validation.validate_extra_tasks
+validate_pv9_actions = validation.validate_pv9_actions
 
 app = Flask(__name__)
 
@@ -62,11 +63,13 @@ def generate_report_route():
     executions_json = request.form.get('executions_json', '').strip()
     blockers_text = request.form.get('blockers_text', '').strip()
     extra_tasks_text = request.form.get('extra_tasks_text', '').strip()
+    pv9_actions_text = request.form.get('pv9_actions_text', '').strip()
 
     bookings_raw = None
     executions_raw = None
     blockers_raw = None
     extra_tasks_raw = None
+    pv9_actions_raw = None
 
     if bookings_json:
         try:
@@ -86,25 +89,31 @@ def generate_report_route():
     if extra_tasks_text:
         extra_tasks_raw = extra_tasks_text
 
+    if pv9_actions_text:
+        pv9_actions_raw = pv9_actions_text
+
     if errors:
         # return to home with parse errors and preserve previously entered fields
         return render_template('home.html', errors=errors, bookings_json=bookings_json,
                                executions_json=executions_json, blockers_text=blockers_text,
-                               extra_tasks_text=extra_tasks_text, date=date_today)
+                               extra_tasks_text=extra_tasks_text, pv9_actions_text=pv9_actions_text,
+                               date=date_today)
 
     # run schema validation using the chosen validation backend
     bookings, b_errors = validate_bookings(bookings_raw)
     executions, e_errors = validate_executions(executions_raw)
     blockers, bl_errors = validate_blockers(blockers_raw)
     extra_tasks, et_errors = validate_extra_tasks(extra_tasks_raw)
+    pv9_actions, pv9_errors = validate_pv9_actions(pv9_actions_raw)
 
-    validation_errors = b_errors + e_errors + bl_errors + et_errors
+    validation_errors = b_errors + e_errors + bl_errors + et_errors + pv9_errors
     if validation_errors:
         return render_template('home.html', errors=validation_errors, bookings_json=bookings_json,
                                executions_json=executions_json, blockers_text=blockers_text,
-                               extra_tasks_text=extra_tasks_text, date=date_today)
+                               extra_tasks_text=extra_tasks_text, pv9_actions_text=pv9_actions_text,
+                               date=date_today)
 
-    report = generate_report(bookings, executions, blockers, date=date_today, extra_tasks=extra_tasks)
+    report = generate_report(bookings, executions, blockers, date=date_today, extra_tasks=extra_tasks, pv9_actions=pv9_actions)
     # escape the report to avoid HTML injection, then convert newlines to <br> for HTML display
     report_safe = html.escape(report)
     report_html = report_safe.replace('\n', '<br>')

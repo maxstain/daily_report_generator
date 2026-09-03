@@ -20,6 +20,7 @@ This is my daily report for today {date}:
 🚧 Blockers / Issues Encountered:
     - {blockers_block}
 {extra_tasks_block}
+{pv9_actions_block}
 _____________________________
 Best Regards.
 """
@@ -143,6 +144,19 @@ def _format_extra_tasks(extra_tasks: List[str]) -> str:
     return "\n".join(lines)
 
 
+def _format_pv9_actions(pv9_actions: List[str]) -> str:
+    """Format the PV9 actions list into the template block.
+    If no PV9 actions are provided, return an empty string.
+    """
+    if not pv9_actions:
+        return ""
+
+    lines = ["", "🚗 PV9 Actions:"]
+    for action in pv9_actions:
+        lines.append(f"    - {action}")
+    return "\n".join(lines)
+
+
 def _coerce_date(date_in: Optional[Union[str, datetime.date]]) -> str:
     """Return an ISO date string for the template. Accepts str or datetime.date or None."""
     if not date_in:
@@ -158,7 +172,7 @@ def _coerce_date(date_in: Optional[Union[str, datetime.date]]) -> str:
         return str(date_in)
 
 
-def generate_report(bookings: List[Dict[str, Any]], executions: List[Dict[str, Any]], blockers: List[str], date: Optional[Union[str, datetime.date]] = None, extra_tasks: Optional[List[str]] = None) -> str:
+def generate_report(bookings: List[Dict[str, Any]], executions: List[Dict[str, Any]], blockers: List[str], date: Optional[Union[str, datetime.date]] = None, extra_tasks: Optional[List[str]] = None, pv9_actions: Optional[List[str]] = None) -> str:
     """Generate the daily report string based on provided data.
 
     Inputs:
@@ -167,6 +181,7 @@ def generate_report(bookings: List[Dict[str, Any]], executions: List[Dict[str, A
     - blockers: list of strings
     - date: optional date (str in ISO format or datetime.date). If omitted, uses today's date.
     - extra_tasks: optional list of strings
+    - pv9_actions: optional list of strings
 
     Output: multi-line string ready for sending or printing.
     """
@@ -175,6 +190,7 @@ def generate_report(bookings: List[Dict[str, Any]], executions: List[Dict[str, A
     executions = executions or []
     blockers = blockers or []
     extra_tasks = extra_tasks or []
+    pv9_actions = pv9_actions or []
 
     total_tcs = _count_testcases(executions)
     date_str = _coerce_date(date)
@@ -183,6 +199,7 @@ def generate_report(bookings: List[Dict[str, Any]], executions: List[Dict[str, A
     executed_block = _format_executed_cases(executions)
     blockers_block = _format_blockers(blockers)
     extra_tasks_block = _format_extra_tasks(extra_tasks)
+    pv9_actions_block = _format_pv9_actions(pv9_actions)
 
     report = TEMPLATE.format(
         date=date_str,
@@ -192,6 +209,7 @@ def generate_report(bookings: List[Dict[str, Any]], executions: List[Dict[str, A
         executed_cases_block=executed_block,
         blockers_block=blockers_block,
         extra_tasks_block=extra_tasks_block,
+        pv9_actions_block=pv9_actions_block,
     )
     logging.debug(report)
     return report

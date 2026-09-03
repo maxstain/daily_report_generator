@@ -32,7 +32,7 @@
         return TIME_RE.test(time);
     }
 
-    function generatePreviewText(bookings, executions, extraTasks){
+    function generatePreviewText(bookings, executions, extraTasks, pv9Actions){
         // return a compact readable preview
         let out = '';
         out += 'Bookings:\n';
@@ -53,6 +53,12 @@
             out += '\nExtra Tasks:\n';
             extraTasks.forEach(function(t, i){
                 out += `  - ${t}\n`;
+            });
+        }
+        if(pv9Actions && pv9Actions.length > 0) {
+            out += '\nPV9 Actions:\n';
+            pv9Actions.forEach(function(a, i){
+                out += `  - ${a}\n`;
             });
         }
         return out;
