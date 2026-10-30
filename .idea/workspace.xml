@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2bc39eec-bbdf-40e0-be56-27247d828054" name="Changes" comment="feat: add PV9 actions support in report generation and validation" />
+    <list default="true" id="2bc39eec-bbdf-40e0-be56-27247d828054" name="Changes" comment="feat: add PV9 actions support in report generation and validation">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.spec" beforeDir="false" afterPath="$PROJECT_DIR$/app.spec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/app.exe" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +55,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="INCOMING_COMMITS_CHECK_STRATEGY" value="FETCH" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -69,61 +76,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="4.760690105824841E-209" />
-      <entry key="S5" value="4.468614975734707E-83" />
-      <entry key="S10" value="5.260034315352053E-41" />
-      <entry key="S30" value="7.530071649617462E-13" />
-      <entry key="S60" value="1.0165652106336068E-5" />
-      <entry key="M2" value="0.04267752817496855" />
-      <entry key="M5" value="6.848675796620655" />
-      <entry key="M10" value="37.772269889766505" />
-      <entry key="M15" value="66.85419853404457" />
-      <entry key="M30" value="118.43387836028103" />
-      <entry key="H1" value="157.68771214504042" />
-      <entry key="H2" value="181.96845151517152" />
-      <entry key="H4" value="195.48101021998144" />
-      <entry key="D1" value="207.50715403900625" />
-      <entry key="W1" value="209.64204884476487" />
+      <entry key="MS100" value="7.145293776158186E-14" />
+      <entry key="MS500" value="0.0023485727517542528" />
+      <entry key="S2" value="0.22014103524033812" />
+      <entry key="S5" value="0.5458589076649898" />
+      <entry key="S10" value="0.7388226496697226" />
+      <entry key="S30" value="0.904024222106334" />
+      <entry key="S60" value="0.9508018837309559" />
+      <entry key="M2" value="0.9750907074001423" />
+      <entry key="M5" value="0.9926202142911408" />
+      <entry key="M10" value="1.4902026401410344" />
+      <entry key="M15" value="4.498191533974592" />
+      <entry key="M30" value="29.340358465080566" />
+      <entry key="H1" value="85.32326009018237" />
+      <entry key="H2" value="147.81222237121048" />
+      <entry key="H4" value="195.11947078742446" />
+      <entry key="D1" value="246.23649436816154" />
+      <entry key="W1" value="256.285039924788" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0" />
-      <entry key="M2" value="1.0" />
-      <entry key="M5" value="1.0" />
-      <entry key="M10" value="1.0" />
-      <entry key="M15" value="1.0" />
-      <entry key="M30" value="1.0" />
-      <entry key="H1" value="1.0" />
-      <entry key="H2" value="1.0" />
-      <entry key="H4" value="1.0" />
-      <entry key="D1" value="1.0" />
-      <entry key="W1" value="1.0" />
+      <entry key="MS100" value="1.000000003265611" />
+      <entry key="MS500" value="1.020081349022959" />
+      <entry key="S2" value="1.3764421291477653" />
+      <entry key="S5" value="1.6765178943189456" />
+      <entry key="S10" value="1.822507078582881" />
+      <entry key="S30" value="1.9369430946044859" />
+      <entry key="S60" value="1.967958209120872" />
+      <entry key="M2" value="1.9838486728548124" />
+      <entry key="M5" value="1.994210761087597" />
+      <entry key="M10" value="2.0746651433360483" />
+      <entry key="M15" value="2.384349860571965" />
+      <entry key="M30" value="3.94862958293901" />
+      <entry key="H1" value="6.405914983990975" />
+      <entry key="H2" value="8.634443534255293" />
+      <entry key="H4" value="10.144200826420732" />
+      <entry key="D1" value="11.66348826523573" />
+      <entry key="W1" value="11.951214582307689" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="3.10967599454073E-45" />
-      <entry key="MS500" value="1.2547090434149758E-9" />
-      <entry key="S2" value="0.005951627709055608" />
-      <entry key="S5" value="0.1287817442025093" />
-      <entry key="S10" value="0.3588617341017419" />
-      <entry key="S30" value="0.7106281118283133" />
-      <entry key="S60" value="0.8429977750357461" />
-      <entry key="M2" value="0.9608175609823126" />
-      <entry key="M5" value="7.8148130323285105" />
-      <entry key="M10" value="38.75450152172214" />
-      <entry key="M15" value="67.84186587282079" />
-      <entry key="M30" value="119.42728084358454" />
-      <entry key="H1" value="158.6842481436355" />
-      <entry key="H2" value="182.96666811758502" />
-      <entry key="H4" value="196.4801041727237" />
-      <entry key="D1" value="208.50700089821297" />
-      <entry key="W1" value="210.64202691335458" />
+      <entry key="MS100" value="0.04066693311357815" />
+      <entry key="MS500" value="0.5397286187749702" />
+      <entry key="S2" value="1.3873573304274338" />
+      <entry key="S5" value="2.112845204978123" />
+      <entry key="S10" value="2.500153957276502" />
+      <entry key="S30" value="2.818876817964601" />
+      <entry key="S60" value="2.907482824458291" />
+      <entry key="M2" value="2.9532411563803063" />
+      <entry key="M5" value="2.984532266655403" />
+      <entry key="M10" value="3.5633926891253234" />
+      <entry key="M15" value="6.880613134894961" />
+      <entry key="M30" value="33.28540329770023" />
+      <entry key="H1" value="91.72517262686515" />
+      <entry key="H2" value="156.4436178473619" />
+      <entry key="H4" value="205.26178418418647" />
+      <entry key="D1" value="257.89960611621444" />
+      <entry key="W1" value="268.23619902837765" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -172,6 +179,7 @@
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;junie.plugin.stays.banner.dismissed&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Projects/Python/daily_report_generator&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -179,7 +187,8 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;,
+    &quot;python.packages.toolwindow.project.migrated.to.right.top.v2&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -260,8 +269,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-PY-262.9437.214" />
-        <option value="bundled-python-sdk-821f704e66d9-5bd6d13a2a75-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-262.9437.214" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-PY-262.10968.92" />
+        <option value="bundled-python-sdk-73a66231627c-5bd6d13a2a75-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-262.10968.92" />
       </set>
     </attachedChunks>
   </component>
@@ -351,6 +360,44 @@
       <workItem from="1788363662641" duration="408000" />
       <workItem from="1788364297179" duration="353000" />
       <workItem from="1788451208758" duration="2240000" />
+      <workItem from="1788520200310" duration="804000" />
+      <workItem from="1788769249576" duration="806000" />
+      <workItem from="1788881014296" duration="617000" />
+      <workItem from="1788968434022" duration="291000" />
+      <workItem from="1789054433988" duration="1124000" />
+      <workItem from="1789395714186" duration="34000" />
+      <workItem from="1789403435763" duration="539000" />
+      <workItem from="1789486431312" duration="385000" />
+      <workItem from="1789570424904" duration="680000" />
+      <workItem from="1789657571876" duration="622000" />
+      <workItem from="1789746301346" duration="956000" />
+      <workItem from="1789988285080" duration="1288000" />
+      <workItem from="1790000654480" duration="1192000" />
+      <workItem from="1790090763318" duration="397000" />
+      <workItem from="1790179625795" duration="1014000" />
+      <workItem from="1790264188653" duration="698000" />
+      <workItem from="1790351429347" duration="94000" />
+      <workItem from="1790611817671" duration="222000" />
+      <workItem from="1790697830821" duration="164000" />
+      <workItem from="1790762829482" duration="944000" />
+      <workItem from="1790850408452" duration="1494000" />
+      <workItem from="1790867845803" duration="24000" />
+      <workItem from="1790946238639" duration="15000" />
+      <workItem from="1790947323171" duration="1720000" />
+      <workItem from="1791209620409" duration="633000" />
+      <workItem from="1791275248745" duration="756000" />
+      <workItem from="1791390645270" duration="727000" />
+      <workItem from="1791470969778" duration="1017000" />
+      <workItem from="1791908418643" duration="409000" />
+      <workItem from="1792138198650" duration="152000" />
+      <workItem from="1792429802024" duration="551000" />
+      <workItem from="1792572212058" duration="5158000" />
+      <workItem from="1792697604119" duration="918000" />
+      <workItem from="1792772927769" duration="881000" />
+      <workItem from="1793024131108" duration="693000" />
+      <workItem from="1793118284014" duration="518000" />
+      <workItem from="1793182492470" duration="3034000" />
+      <workItem from="1793315164519" duration="831000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -488,7 +535,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788453378217</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="feat: add PV9 actions support in report generation and validation">
+      <option name="closed" value="true" />
+      <created>1788520396205</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1788520396206</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

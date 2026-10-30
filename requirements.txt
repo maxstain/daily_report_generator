@@ -5,6 +5,7 @@ Flask
 pydantic
 # pip install jsonschema
 jsonschema
+pyinstaller
 
 # Optional dev/test dependencies
 # To run Playwright UI tests: install playwright and pytest-playwright

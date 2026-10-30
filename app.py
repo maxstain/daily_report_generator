@@ -11,6 +11,7 @@ VALIDATOR_BACKEND = os.environ.get('VALIDATOR_BACKEND', 'auto').lower()
 
 # default validators module (pure python)
 from Functions import validation as pure_validation
+
 validation = pure_validation
 
 if VALIDATOR_BACKEND in ('auto', 'pydantic'):
@@ -113,7 +114,8 @@ def generate_report_route():
                                extra_tasks_text=extra_tasks_text, pv9_actions_text=pv9_actions_text,
                                date=date_today)
 
-    report = generate_report(bookings, executions, blockers, date=date_today, extra_tasks=extra_tasks, pv9_actions=pv9_actions)
+    report = generate_report(bookings, executions, blockers, date=date_today, extra_tasks=extra_tasks,
+                             pv9_actions=pv9_actions)
     # escape the report to avoid HTML injection, then convert newlines to <br> for HTML display
     report_safe = html.escape(report)
     report_html = report_safe.replace('\n', '<br>')

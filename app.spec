@@ -5,8 +5,14 @@ a = Analysis(
     ['app.py'],
     pathex=[],
     binaries=[],
-    datas=[],
-    hiddenimports=[],
+    datas=[
+        ('templates', 'templates'),
+        ('static', 'static'),
+    ],
+    hiddenimports=[
+        'Functions.pydantic_validation',
+        'Functions.jsonschema_validation',
+    ],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
