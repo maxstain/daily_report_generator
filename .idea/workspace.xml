@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2bc39eec-bbdf-40e0-be56-27247d828054" name="Changes" comment="feat: add PV9 actions support in report generation and validation">
+    <list default="true" id="2bc39eec-bbdf-40e0-be56-27247d828054" name="Changes" comment="feat: update report generation with improved formatting and add missing dependencies">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.spec" beforeDir="false" afterPath="$PROJECT_DIR$/app.spec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/app.exe" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,6 +140,7 @@
   <component name="ProjectSessionTemplates">
     <option name="panelTemplate">
       <template>
+        <option name="ensembleEnabled" value="false" />
         <option name="modeId" value="Agent" />
         <option name="model">
           <model>
@@ -154,6 +152,7 @@
         <option name="worktreeMode" value="WORKSPACE" />
       </template>
     </option>
+    <option name="version" value="1" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -269,8 +268,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-PY-262.10968.92" />
-        <option value="bundled-python-sdk-73a66231627c-5bd6d13a2a75-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-262.10968.92" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-PY-262.11879.98" />
+        <option value="bundled-python-sdk-ebb3072d7bdf-5bd6d13a2a75-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-262.11879.98" />
       </set>
     </attachedChunks>
   </component>
@@ -398,6 +397,10 @@
       <workItem from="1793118284014" duration="518000" />
       <workItem from="1793182492470" duration="3034000" />
       <workItem from="1793315164519" duration="831000" />
+      <workItem from="1793370590592" duration="1526000" />
+      <workItem from="1793626688104" duration="910000" />
+      <workItem from="1793634540517" duration="376000" />
+      <workItem from="1793869319676" duration="646000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -543,7 +546,15 @@
       <option name="project" value="LOCAL" />
       <updated>1788520396206</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="feat: update report generation with improved formatting and add missing dependencies">
+      <option name="closed" value="true" />
+      <created>1793370729704</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1793370729704</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -561,7 +572,8 @@
     <MESSAGE value="feat: add executable app file (app.exe) to distribution" />
     <MESSAGE value="chore: remove version constraints from requirements.txt dependencies" />
     <MESSAGE value="feat: add PV9 actions support in report generation and validation" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add PV9 actions support in report generation and validation" />
+    <MESSAGE value="feat: update report generation with improved formatting and add missing dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: update report generation with improved formatting and add missing dependencies" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/daily_report_generator$DailyReportGenerator.coverage" NAME="DailyReportGenerator Coverage Results" MODIFIED="1785753990074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

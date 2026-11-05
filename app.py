@@ -35,7 +35,7 @@ if VALIDATOR_BACKEND in ('auto', 'jsonschema') and validation is pure_validation
         if VALIDATOR_BACKEND == 'jsonschema':
             raise
         # fall back to pure
-
+ 
 # expose functions
 validate_bookings = validation.validate_bookings
 validate_executions = validation.validate_executions
