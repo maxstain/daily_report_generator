@@ -1,13 +1,16 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+from pathlib import Path
+
+project_dir = Path(SPECPATH)
 
 a = Analysis(
-    ['app.py'],
-    pathex=[],
+    [str(project_dir / 'app.py')],
+    pathex=[str(project_dir)],
     binaries=[],
     datas=[
-        ('templates', 'templates'),
-        ('static', 'static'),
+        (str(project_dir / 'templates'), 'templates'),
+        (str(project_dir / 'static'), 'static'),
     ],
     hiddenimports=[
         'Functions.pydantic_validation',
